@@ -27,7 +27,9 @@ class LandingScreen extends StatelessWidget {
                 fontWeight: FontWeight.w600,
               ),
             ),
-            SizedBox(height: size.height * 0.1),
+            // SizedBox(height: size.height * 0.1),
+            Spacer(),
+
             Padding(
               padding: const EdgeInsets.symmetric(horizontal: 20),
               child: Image.asset(
@@ -37,7 +39,8 @@ class LandingScreen extends StatelessWidget {
                 color: tabColor,
               ),
             ),
-            SizedBox(height: size.height * 0.1),
+            // SizedBox(height: size.height * 0.1),
+            Spacer(),
             const Padding(
               padding: EdgeInsets.all(15.0),
               child: Text(
@@ -54,6 +57,7 @@ class LandingScreen extends StatelessWidget {
                 onPressed: () => navigateToLoginScreen(context),
               ),
             ),
+            const SizedBox(height: 10),
           ],
         ),
       ),

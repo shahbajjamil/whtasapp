@@ -28,6 +28,7 @@ class _LoginScreenState extends ConsumerState<LoginScreen> {
   void pickCountry() {
     showCountryPicker(
         context: context,
+        favorite: ["IN"],
         onSelect: (Country _country) {
           setState(() {
             country = _country;
