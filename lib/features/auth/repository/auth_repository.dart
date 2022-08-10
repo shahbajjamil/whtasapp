@@ -12,6 +12,8 @@ import 'package:whatsapp_ui/features/auth/screen/user_information_screen.dart';
 import 'package:whatsapp_ui/model/user_model.dart';
 import 'package:whatsapp_ui/screens/mobile_layout_screen.dart';
 
+import '../../../model/user_model.dart';
+
 final authRepositoryProvider = Provider(
   (ref) => AuthRepository(
     auth: FirebaseAuth.instance,
@@ -112,8 +114,16 @@ class AuthRepository {
           context,
           MaterialPageRoute(builder: (context) => const MobileLayoutScreen()),
           (route) => false);
-    } on FirebaseAuthException catch (e) {
-      showSnackBar(context: context, content: e.message!);
+    } catch (e) {
+      showSnackBar(context: context, content: e.toString());
     }
+  }
+
+  Stream<UserModel> userData(String userID) {
+    return firestore.collection('users').doc(userID).snapshots().map(
+          (event) => UserModel.fromMap(
+            event.data()!,
+          ),
+        );
   }
 }
